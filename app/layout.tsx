@@ -1,24 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/layout/Header";
 import { Container } from "@mui/material";
-import ThemeRegistry from "./ThemeRegistry";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import type { Metadata } from "next";
+import { Roboto } from 'next/font/google';
+import "./globals.css";
+import theme from "./theme";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Shop",
   description: "A fake product shop demo using Nextjs",
 };
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
 
 export default function RootLayout({
   children,
@@ -26,16 +26,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeRegistry>
-          <Header />
-          <Container disableGutters maxWidth="xl" sx={{ paddingTop: 2 }}>
-            {children}
-          </Container>
-        </ThemeRegistry>
+    <html lang="en" className={roboto.variable} suppressHydrationWarning>
+      <body>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Container disableGutters maxWidth="xl" sx={{ paddingTop: 2 }}>
+              {children}
+            </Container>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
