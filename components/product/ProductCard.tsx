@@ -1,26 +1,22 @@
-'use client';
-
 import { Product } from '@/types/product';
+import StarIcon from '@mui/icons-material/Star';
 import {
     Box,
-    Button,
     Card,
     CardActions,
     CardContent,
-    CardMedia,
+    Rating,
     Typography
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import ProductActionButtons from './ProductActionButtons';
 
 type ProductCardProps = {
     product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-    const isInCart = true; // Replace with actual cart state logic
 
     return (
         <Card
@@ -36,13 +32,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                 },
             }}
         >
-            <Link href={product.id.toString()} passHref >
+            <Link href={`product/${product.id.toString()}`} passHref>
                 <Box
                     sx={{
                         position: 'relative',
                         width: '100%',
                         height: 250,
-
                     }}
                 >
                     <Image
@@ -51,7 +46,6 @@ export default function ProductCard({ product }: ProductCardProps) {
                         fill
                         sizes="(max-width: 600px) 100vw, 25vw"
                         style={{ objectFit: 'contain' }}
-
                     />
                 </Box>
                 <CardContent>
@@ -71,33 +65,28 @@ export default function ProductCard({ product }: ProductCardProps) {
                     >
                         {product.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        ${product.price.toFixed(2)}
+
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        £{product.price.toFixed(2)}
                     </Typography>
+
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                        <Rating
+                            value={product.rating.rate}
+                            precision={0.5}
+                            readOnly
+                            size="small"
+                            emptyIcon={<StarIcon style={{ opacity: 0.3 }} fontSize="inherit" />}
+                        />
+                        <Typography variant="caption" color="text.secondary">
+                            {product.rating.rate.toFixed(1)} ({product.rating.count})
+                        </Typography>
+                    </Box>
                 </CardContent>
             </Link>
             <CardActions sx={{ justifyContent: 'center' }}>
-                {isInCart ? (
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<RemoveShoppingCartIcon />}
-                        onClick={() => { }}
-                    >
-                        Remove from Cart
-                    </Button>
-                ) : (
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        startIcon={<AddShoppingCartIcon />}
-                        onClick={() => { }}
-                    >
-                        Add to Cart
-                    </Button>
-                )
-                }
-            </CardActions >
-        </Card >
+                <ProductActionButtons product={product} />
+            </CardActions>
+        </Card>
     );
 }

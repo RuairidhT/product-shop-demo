@@ -35,9 +35,19 @@ export default function ProductCardSkeleton() {
                 <Typography gutterBottom variant="subtitle1">
                     <Skeleton width="80%" height={24} />
                 </Typography>
+
                 <Typography variant="body2">
                     <Skeleton width="40%" height={20} />
                 </Typography>
+
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
+                    <Skeleton variant="circular" width={20} height={20} />
+                    <Skeleton variant="circular" width={20} height={20} />
+                    <Skeleton variant="circular" width={20} height={20} />
+                    <Skeleton variant="circular" width={20} height={20} />
+                    <Skeleton variant="circular" width={20} height={20} />
+                    <Skeleton width={50} height={16} />
+                </Box>
             </CardContent>
 
             <CardActions sx={{ justifyContent: 'center' }}>
