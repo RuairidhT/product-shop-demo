@@ -1,28 +1,18 @@
-"use client"
+import ProductGrid from "@/components/product/ProductGrid";
+import ProductGridSkeleton from "@/components/product/ProductGridSkeleton";
+import { fetchProducts } from "@/lib/api";
+import { Typography } from "@mui/material";
+import { Suspense } from "react";
 
-import { useProducts } from "@/hooks/useProducts";
-import Image from "next/image";
-
-export default function Home() {
-  const { products, loading, error } = useProducts();
+export default async function Home() {
+  const products = await fetchProducts();
 
   return (
-    <>
-    {
-      loading && <p>Loading products...</p>
-    }
-    {
-      error && <p>Error: {error}</p>
-    }
-    {
-      products && products.map(product => (
-        <div key={product.id} className="product">
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
-        </div>
-      ))
-    }
-    </>
+    <main>
+      <Typography variant="h3" py={2}>Products</Typography>
+      <Suspense fallback={<ProductGridSkeleton />}>
+        <ProductGrid products={products} />
+      </Suspense>
+    </main >
   );
 }
