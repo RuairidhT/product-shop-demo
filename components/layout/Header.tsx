@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Box, Button } from '@mui/material';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import Link from 'next/link';
 import CartCounter from './CartCounter';
 

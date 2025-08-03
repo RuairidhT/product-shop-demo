@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Shop Demo
+
+A simple online shop built for the See Tickets front-end challenge. Users can browse products, view details, filter by category, and add items to their basket.
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repo and install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) to see the app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What I Built
 
-## Learn More
+The app includes all the main features from the challenge:
 
-To learn more about Next.js, take a look at the following resources:
+- **Product listing** - Shows all products from the Fake Store API
+- **Product details** - Click any product to see more info
+- **Category filtering** - Filter products by category using the dropdown
+- **Shopping basket** - Add/remove items, see total in header
+- **Checkout** - Complete purchase with a success page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Bonus Features I Added
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Quantity controls** - Change item quantities in the basket
+- **Persistent basket** - Your basket saves to local storage
+- **Unit tests** - Added tests for the cart functionality
+- **Responsive design** - Works on mobile and desktop
 
-## Deploy on Vercel
+## Tech Stack Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I tried to match your tech stack where possible:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **React** & **Next.js** - Main framework
+- **MUI** - For components and styling
+- **TypeScript** - Type safety throughout
+- **Zustand** - State management (lighter alternative to Redux)
+- **Jest** & **React Testing Library** - For unit tests
+
+## How It Works
+
+### The Basket
+I used Zustand for managing the shopping cart because it's simple and does the job well. The cart automatically saves to localStorage so your items don't disappear when you refresh.
+
+### API Calls
+All product data comes from the Fake Store API. I fetch products on the server side where possible for better performance.
+
+### Styling
+Most styling is done with MUI components to keep things consistent. I added some custom responsive breakpoints to make sure it looks good on all screen sizes.
+
+## Testing
+
+Run the tests with:
+```bash
+npm test
+```
+
+I focused on testing the cart functionality since that's the most important business logic.
+
+## What I'd Do Next
+
+If I had more time, I would:
+
+- Add more comprehensive tests
+- Improve error handling for API failures
+- Add loading states for better UX
+- Implement user accounts and order history
+- Improve accessibilty
+- E2E tests with Playwright
+- Add a CI/CD Pipeline
+
+## Thoughts on the Challenge
+
+This was a good challenge that covered all the basics of an e-commerce app. I enjoyed working with the Fake Store API and trying to match your tech stack. The requirements were clear and gave me room to add some extra features.
+
+The trickiest part was getting the localStorage persistence to work properly with Next.js server-side rendering, but I managed to sort it out with proper hydration handling.

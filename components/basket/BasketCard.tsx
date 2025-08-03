@@ -1,7 +1,7 @@
 import { useStore } from "@/store/useStore";
 import { CartItem } from "@/types/product";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import { Box, Card, IconButton, Paper, TextField, Typography } from "@mui/material";
+import { Box, Card, IconButton, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 
 interface BasketCardProps {

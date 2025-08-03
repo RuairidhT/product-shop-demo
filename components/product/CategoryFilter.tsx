@@ -1,6 +1,6 @@
 'use client';
 
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Box } from '@mui/material';
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
@@ -31,14 +31,14 @@ const CategoryFilter = ({ categories, selectedCategory }: CategoryFilterProps) =
     };
 
     return (
-        <Box sx={{ mb: 3, minWidth: 200 }}>
+        <Box sx={{ mb: 3, minWidth: 200, maxWidth: 365 }}>
             <FormControl fullWidth>
-                <InputLabel id="category-select-label">Category</InputLabel>
+                <InputLabel id="category-select-label">Filter Category</InputLabel>
                 <Select
                     labelId="category-select-label"
                     id="category-select"
                     value={selectedCategory}
-                    label="Category"
+                    label="Filter Category"
                     onChange={handleCategoryChange}
                 >
                     <MenuItem value="">

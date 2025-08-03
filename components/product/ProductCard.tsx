@@ -24,13 +24,15 @@ export default function ProductCard({ product }: ProductCardProps) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                boxShadow: 2,
+                boxShadow: 3,
+                padding: 2,
                 transition: 'box-shadow 0.3s ease, transform 0.2s ease',
                 '&:hover': {
                     boxShadow: 6,
                     transform: 'translateY(-4px)',
                 },
             }}
+
         >
             <Link href={`product/${product.id.toString()}`} passHref>
                 <Box
