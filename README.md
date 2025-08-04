@@ -1,15 +1,17 @@
-# E-Commerce Shop Demo
+# Product Shop Demo
 
 A simple online shop built for the See Tickets front-end challenge. Users can browse products, view details, filter by category, and add items to their basket.
 
 ## Getting Started
 
 1. Clone the repo and install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -37,26 +39,30 @@ The app includes all the main features from the challenge:
 
 I tried to match your tech stack where possible:
 
-- **React** & **Next.js** - Main framework
-- **MUI** - For components and styling
-- **TypeScript** - Type safety throughout
-- **Zustand** - State management (lighter alternative to Redux)
-- **Jest** & **React Testing Library** - For unit tests
+- **React** & **Next.js** 
+- **MUI** 
+- **TypeScript** 
+- **Zustand** 
+- **Jest** & **React Testing Library**
 
 ## How It Works
 
 ### The Basket
+
 I used Zustand for managing the shopping cart because it's simple and does the job well. The cart automatically saves to localStorage so your items don't disappear when you refresh.
 
 ### API Calls
+
 All product data comes from the Fake Store API. I fetch products on the server side where possible for better performance.
 
 ### Styling
+
 Most styling is done with MUI components to keep things consistent. I added some custom responsive breakpoints to make sure it looks good on all screen sizes.
 
 ## Testing
 
 Run the tests with:
+
 ```bash
 npm test
 ```
@@ -80,3 +86,7 @@ If I had more time, I would:
 This was a good challenge that covered all the basics of an e-commerce app. I enjoyed working with the Fake Store API and trying to match your tech stack. The requirements were clear and gave me room to add some extra features.
 
 The trickiest part was getting the localStorage persistence to work properly with Next.js server-side rendering, but I managed to sort it out with proper hydration handling.
+
+## Known Issues
+
+Hydration issue: There may be a hydration mismatch warning in the console, but it doesn't appear when browsing the app in private/incognito mode.
